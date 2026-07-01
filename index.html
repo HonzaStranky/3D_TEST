@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Modely Studio</title>
+    <title>Honza3D</title>
     <style>
         * {
             margin: 0;
@@ -56,7 +56,7 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 18px;
         }
 
         .nav-links a {
@@ -65,8 +65,9 @@
             font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
-            padding: 10px 15px;
+            padding: 8px 12px;
             border-radius: 8px;
+            font-size: 0.95rem;
         }
 
         .nav-links a:hover {
@@ -237,6 +238,8 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             opacity: 0;
             transform: translateY(50px);
+            display: flex;
+            flex-direction: column;
         }
 
         .product-item.animate {
@@ -268,6 +271,9 @@
 
         .product-info {
             padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
         .product-title {
@@ -279,6 +285,21 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 10px;
+        }
+
+        .product-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255, 214, 0, 0.18);
+            color: #ffd966;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
         }
 
         .product-price {
@@ -309,6 +330,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            margin-top: auto;
         }
 
         .order-button:hover {
@@ -553,18 +575,33 @@
         }
 
         .social-links a {
-            color: #fff;
-            font-size: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 46px;
+            height: 46px;
             transition: all 0.3s ease;
             padding: 10px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
         }
 
+        .social-links a img {
+            width: 24px;
+            height: 24px;
+            display: block;
+            filter: invert(1);
+        }
+
         .social-links a:hover {
-            color: #ff6b6b;
             background: rgba(255, 107, 107, 0.2);
             transform: translateY(-3px);
+        }
+
+        .social-links a[href^="mailto:"] img {
+            filter: none;
+            width: 28px;
+            height: 28px;
         }
 
         /* Responsive Design */
@@ -671,12 +708,14 @@
 <body>
     <header>
         <nav class="container">
-            <div class="logo">3D Modely Studio</div>
+            <div class="logo">Honza3D</div>
             <ul class="nav-links">
                 <li><a href="#home">Domů</a></li>
                 <li><a href="#products">Produkty</a></li>
                 <li><a href="#services">Služby</a></li>
                 <li><a href="#contact">Kontakt</a></li>
+                <li><a href="ourteam.html">Náš Team</a></li>
+                <li><a href="reviews.html">Recenze</a></li>
             </ul>
             <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
             <div class="mobile-menu" id="mobileMenu">
@@ -684,6 +723,8 @@
                 <a href="#products" onclick="closeMobileMenu()">Produkty</a>
                 <a href="#services" onclick="closeMobileMenu()">Služby</a>
                 <a href="#contact" onclick="closeMobileMenu()">Kontakt</a>
+                <a href="ourteam.html" onclick="closeMobileMenu()">Náš Team</a>
+                <a href="reviews.html" onclick="closeMobileMenu()">Recenze</a>
             </div>
         </nav>
     </header>
@@ -691,7 +732,7 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Úžasné 3D Modely</h1>
-            <p>Přivedeme vaši představivost k životu s přesností a uměleckým cítěním</p>
+            <p>Přivedeme vaši představivost k životu s přesností a rozumnou cenou :D</p>
             <a href="#products" class="cta-button">Zobrazit Produkty</a>
         </div>
     </section>
@@ -699,107 +740,7 @@
     <section id="products" class="products">
         <div class="container">
             <h2 class="section-title">Naše Produkty</h2>
-            <div class="products-grid">
-                <div class="product-item" data-product="Píšťalka" data-price="10">
-                    <div class="product-image"></div>
-                    <div class="product-info">
-                        <div class="product-title">
-                            <span>Píšťalka</span>
-                            <span class="product-price">10 Kč</span>
-                        </div>
-                        <p class="product-description">Kvalitní 3D tištěná píšťalka s jasným zvukem. Ideální pro sport, hry nebo jako dárek.</p>
-                        <button class="order-button">Objednat</button>
-                    </div>
-                </div>
-                <div class="product-item" data-product="Lego Kostka" data-price="20">
-                    <div class="product-image"></div>
-                    <div class="product-info">
-                        <div class="product-title">
-                            <span>Lego Kostka</span>
-                            <span class="product-price">20 Kč</span>
-                        </div>
-                        <p class="product-description">Kompatibilní kostka s klasickým Lego designem. Perfektní pro rozšíření vaší stavebnice.</p>
-                        <button class="order-button">Objednat</button>
-                    </div>
-                </div>
-                <div class="product-item" data-product="Raptor" data-price="50">
-                    <div class="product-image"></div>
-                    <div class="product-info">
-                        <div class="product-title">
-                            <span>Raptor</span>
-                            <span class="product-price">50 Kč</span>
-                        </div>
-                        <p class="product-description">Detailní model dinosaura raptora. Skvělý pro sběratele nebo jako vzdělávací pomůcka.</p>
-                        <button class="order-button">Objednat</button>
-                    </div>
-                </div>
-                <div class="product-item" data-product="Axolotl" data-price="70">
-                    <div class="product-image"></div>
-                    <div class="product-info">
-                        <div class="product-title">
-                            <span>Axolotl</span>
-                            <span class="product-price">70 Kč</span>
-                        </div>
-                        <p class="product-description">Roztomilý model axolotla s jemnými detaily. Populární mezi milovníky přírody.</p>
-                        <button class="order-button">Objednat</button>
-                    </div>
-                </div>
-                <div class="product-item" data-product="Žába" data-price="60">
-                    <div class="product-image"></div>
-                    <div class="product-info">
-                        <div class="product-title">
-                            <span>Žába</span>
-                            <span class="product-price">60 Kč</span>
-                        </div>
-                        <p class="product-description">Realistický model žáby s autentickými detaily. Ideální pro výuku nebo dekoraci.</p>
-                        <button class="order-button">Objednat</button>
-                    </div>
-                </div>
-                <div class="product-item" data-product="Chobotnička" data-price="30">
-                    <div class="product-image"></div>
-                    <div class="product-info">
-                        <div class="product-title">
-                            <span>Chobotnička</span>
-                            <span class="product-price">30 Kč</span>
-                        </div>
-                        <p class="product-description">Elegantní model chobotnice s ohybnými chapadly. Fascinující mořský tvor.</p>
-                        <button class="order-button">Objednat</button>
-                    </div>
-                </div>
-                <div class="product-item" data-product="Držák Na Klíče" data-price="35">
-                    <div class="product-image"></div>
-                    <div class="product-info">
-                        <div class="product-title">
-                            <span>Držák Na Klíče</span>
-                            <span class="product-price">35 Kč</span>
-                        </div>
-                        <p class="product-description">Praktický držák na klíče s moderním designem. Udržuje vaše klíče vždy na svém místě.</p>
-                        <button class="order-button">Objednat</button>
-                    </div>
-                </div>
-                <div class="product-item" data-product="Stojánek na mobil" data-price="65">
-                    <div class="product-image"></div>
-                    <div class="product-info">
-                        <div class="product-title">
-                            <span>Stojánek na mobil</span>
-                            <span class="product-price">65 Kč</span>
-                        </div>
-                        <p class="product-description">Ergonomický stojánek pro mobilní telefony. Nastavitelný úhel pro pohodlné používání.</p>
-                        <button class="order-button">Objednat</button>
-                    </div>
-                </div>
-                <div class="product-item" data-product="Stojánek na ovladač" data-price="75">
-                    <div class="product-image"></div>
-                    <div class="product-info">
-                        <div class="product-title">
-                            <span>Stojánek na ovladač</span>
-                            <span class="product-price">75 Kč</span>
-                        </div>
-                        <p class="product-description">Stylový stojánek pro herní ovladače. Udržuje váš ovladač organizovaný a snadno dostupný.</p>
-                        <button class="order-button">Objednat</button>
-                    </div>
-                </div>
-            </div>
+            <div class="products-grid" id="productsGrid"></div>
         </div>
     </section>
 
@@ -853,10 +794,12 @@
                         dosáhnout úžasných výsledků.
                     </p>
                     <div class="contact-details">
-                        <p><strong>📧 Email:</strong> info@3dmodely.cz</p>
-                        <p><strong>📞 Telefon:</strong> +420 123 456 789</p>
-                        <p><strong>🏢 Adresa:</strong> Kreativní ulice 123, Praha</p>
-                        <p><strong>⏰ Otevírací doba:</strong> Po-Pá 9:00-18:00</p>
+                        <p><strong>📧 Email:</strong> Honza-3D@email.cz</p>
+                        <p><strong>📞 Telefon:</strong> Obraťte se na Whatsapp</p>
+
+                        <p style="color: #ff3333; font-weight: bold; background-color: rgba(255, 51, 51, 0.1); padding: 8px 12px; border-left: 4px solid #ff3333; border-radius: 4px; margin-top: 15px;">
+                            ⚠️ Pozor: Kontaktní formulář je momentálně ve vývoji a zatím nefunguje. Použijte prosím e-mail nebo WhatsApp níže.
+                        </p>
                     </div>
                 </div>
                 <form class="contact-form" id="contactForm">
@@ -886,16 +829,6 @@
                         <label for="product">Vyberte produkt</label>
                         <select id="product" name="product" required>
                             <option value="">-- Vyberte produkt --</option>
-                            <option value="Píšťalka - 10 Kč">Píšťalka - 10 Kč</option>
-                            <option value="Lego Kostka - 20 Kč">Lego Kostka - 20 Kč</option>
-                            <option value="Raptor - 50 Kč">Raptor - 50 Kč</option>
-                            <option value="Axolotl - 70 Kč">Axolotl - 70 Kč</option>
-                            <option value="Žába - 60 Kč">Žába - 60 Kč</option>
-                            <option value="Chobotnička - 30 Kč">Chobotnička - 30 Kč</option>
-                            <option value="Držák Na Klíče - 35 Kč">Držák Na Klíče - 35 Kč</option>
-                            <option value="Stojánek na mobil - 65 Kč">Stojánek na mobil - 65 Kč</option>
-                            <option value="Stojánek na ovladač - 75 Kč">Stojánek na ovladač - 75 Kč</option>
-                            <option value="Vlastní model">Vlastní model (konzultace zdarma)</option>
                         </select>
                         <div class="error-message">Prosím vyberte produkt</div>
                     </div>
@@ -923,13 +856,21 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="logo">3D Modely Studio</div>
-                <p>&copy; 2025 3D Modely Studio. Všechna práva vyhrazena.</p>
+                <div class="logo">Honza3D</div>
+                <p>&copy; 2026 Honza3D. Všechna práva vyhrazena.</p>
                 <div class="social-links">
-                    <a href="#" title="Instagram" aria-label="Instagram">📷</a>
-                    <a href="#" title="Facebook" aria-label="Facebook">📘</a>
-                    <a href="mailto:info@3dmodely.cz" title="Email" aria-label="Email">📧</a>
-                    <a href="#" title="WhatsApp" aria-label="WhatsApp">📱</a>
+                    <a href="https://www.instagram.com/" title="Instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/instagram.svg" alt="Instagram logo">
+                    </a>
+                    <a href="https://www.facebook.com/" title="Facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/facebook.svg" alt="Facebook logo">
+                    </a>
+                    <a href="mailto:Honza-3D@email.cz" title="Email" aria-label="Email">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23ffffff'/%3E%3Ctext x='16' y='20' dominant-baseline='middle' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-size='18' font-weight='700' fill='%23ff7f00'%3EE%3C/text%3E%3C/svg%3E" alt="Email logo">
+                    </a>
+                    <a href="https://chat.whatsapp.com/BgV4ceDdH5DGxZhwLjeVdb" title="WhatsApp" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v12/icons/whatsapp.svg" alt="WhatsApp logo">
+                    </a>
                 </div>
             </div>
         </div>
@@ -937,17 +878,61 @@
 
     <script>
         // Products data
+        // Copy paste placeholder
+        // { name: '.', price: 1, description: '.' },
         const products = [
-            { name: 'Píšťalka', price: 10 },
-            { name: 'Lego Kostka', price: 20 },
-            { name: 'Raptor', price: 50 },
-            { name: 'Axolotl', price: 70 },
-            { name: 'Žába', price: 60 },
-            { name: 'Chobotnička', price: 30 },
-            { name: 'Držák Na Klíče', price: 35 },
-            { name: 'Stojánek na mobil', price: 65 },
-            { name: 'Stojánek na ovladač', price: 75 }
+            { name: 'Artikulovaný Drak', price: 199, badge: 'Bestseller', description: 'Detailní 3D tištěný drak s ohebným kloubovým tělem. Perfektní antistresová hračka i fantasy dekorace z PLA plastu.' },
+            { name: 'Píšťalka', price: 5, description: 'Kapesní 3D píšťalka na klíče. Ideální for fun nebo na rychlé nalezení kámoše v lese.' },
+            { name: 'Artikulovaný Axolotl', price: 99, description: 'Ohebný 3D tištěný axolotl s hýbacími klouby. Roztomilý vodní dráček jen tak for fun na stůl.' },
+
         ];
+
+        const productsGrid = document.getElementById('productsGrid');
+        const productSelect = document.getElementById('product');
+
+        function formatPrice(price) {
+            return `${price} Kč,-`;
+        }
+
+        function renderProducts() {
+            if (!productsGrid || !productSelect) return;
+
+            productsGrid.innerHTML = '';
+            productSelect.innerHTML = '<option value="">-- Vyberte produkt --</option>';
+
+            products.forEach(product => {
+                const item = document.createElement('div');
+                item.className = 'product-item';
+                item.dataset.product = product.name;
+                item.dataset.price = product.price;
+                item.innerHTML = `
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <div class="product-title">
+                            <span>${product.name}</span>
+                            <span class="product-price">${formatPrice(product.price)}</span>
+                        </div>
+                        ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+                        <p class="product-description">${product.description || ''}</p>
+                        <button type="button" class="order-button">Objednat</button>
+                    </div>
+                `;
+
+                productsGrid.appendChild(item);
+
+                const option = document.createElement('option');
+                option.value = `${product.name} - ${product.price} Kč`;
+                option.textContent = `${product.name} - ${formatPrice(product.price)}`;
+                productSelect.appendChild(option);
+            });
+
+            const customOption = document.createElement('option');
+            customOption.value = 'Vlastní model';
+            customOption.textContent = 'Vlastní model (konzultace zdarma)';
+            productSelect.appendChild(customOption);
+        }
+
+        renderProducts();
 
         // Mobile menu functionality
         function toggleMobileMenu() {
