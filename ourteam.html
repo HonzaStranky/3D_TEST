@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Náš Team - Honza3D</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 14px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            transition: background 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .hero {
+            background: rgba(0, 0, 0, 0.18);
+            padding: 40px;
+            border-radius: 24px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            max-width: 820px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .team-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .team-card h2 {
+            font-size: 1.75rem;
+            margin-bottom: 10px;
+        }
+
+        .team-role {
+            color: #ffd966;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .team-bio {
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            flex: 1;
+        }
+
+        .team-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .team-contact a {
+            color: #fff;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 12px 16px;
+            border-radius: 999px;
+            transition: background 0.3s ease;
+        }
+
+        .team-contact a:hover {
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Honza3D</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Domů</a></li>
+                <li><a href="index.html#products">Produkty</a></li>
+                <li><a href="index.html#services">Služby</a></li>
+                <li><a href="index.html#contact">Kontakt</a></li>
+                <li><a href="ourteam.html">Náš Team</a></li>
+                <li><a href="reviews.html">Recenze</a></li>
+            </ul>
+        </header>
+
+        <section class="hero">
+            <h1>Náš Team</h1>
+            <p>Seznamte se s hlavní osobou Honza, který stojí za Honza3D. Zde najdete jen čistý týmový obsah bez produktů či dalších sekcí.</p>
+        </section>
+
+        <section class="team-grid">
+            <article class="team-card">
+                <h2>Honza</h2>
+                <div class="team-role">Owner</div>
+                <p class="team-bio">Honza vytváří 3D modely, tiskne prototypy a zajišťuje osobní kontaktní podporu pro každou zakázku. Podnikání Honza3D založil s vášní pro detail a praktické použití 3D tisku.</p>
+                <div class="team-contact">
+                    <a href="mailto:Honza-3D@email.cz">Email</a>
+                    <a href="https://chat.whatsapp.com/BgV4ceDdH5DGxZhwLjeVdb" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                </div>
+            </article>
+        </section>
+
+        <footer>
+            &copy; 2026 Honza3D. Všechna práva vyhrazena.
+        </footer>
+    </div>
+</body>
+</html>
