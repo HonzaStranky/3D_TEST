@@ -12,10 +12,23 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', 'Inter', Arial, sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(255, 107, 107, 0.24), transparent 30%),
+                radial-gradient(circle at top right, rgba(93, 176, 255, 0.22), transparent 28%),
+                linear-gradient(135deg, #07111f 0%, #152a4a 45%, #6b3fa0 100%);
             color: #fff;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(255,255,255,0.08), transparent 35%, rgba(255,255,255,0.04));
+            pointer-events: none;
+            z-index: 0;
         }
 
         .container {
@@ -26,8 +39,8 @@
 
         /* Header */
         header {
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
+            background: rgba(6, 11, 22, 0.45);
+            backdrop-filter: blur(16px);
             position: fixed;
             top: 0;
             left: 0;
@@ -35,6 +48,8 @@
             z-index: 1000;
             padding: 15px 0;
             transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.13);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.18);
         }
 
         nav {
@@ -46,11 +61,13 @@
 
         .logo {
             font-size: clamp(1.5rem, 4vw, 2rem);
-            font-weight: bold;
-            background: linear-gradient(45deg, #fff, #f0f0f0);
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            background: linear-gradient(45deg, #ffffff, #ffe4c4 60%, #ffd166);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-shadow: 0 8px 24px rgba(0,0,0,0.18);
         }
 
         .nav-links {
@@ -71,9 +88,10 @@
         }
 
         .nav-links a:hover {
-            color: #f0f0f0;
-            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            background: rgba(255, 255, 255, 0.14);
             transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
         /* Mobile menu */
@@ -124,24 +142,33 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            min-height: 600px;
+            min-height: 680px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
             overflow: hidden;
+            padding-top: 100px;
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,0 1000,300 1000,1000 0,700"/></svg>');
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(255,255,255,0.16), transparent 24%),
+                radial-gradient(circle at 80% 10%, rgba(255, 209, 102, 0.16), transparent 24%),
+                linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
             animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 0 38%, rgba(7, 17, 31, 0.24) 100%);
+            pointer-events: none;
         }
 
         @keyframes float {
@@ -152,27 +179,48 @@
         .hero-content {
             z-index: 2;
             position: relative;
-            padding: 0 20px;
+            padding: 42px 48px;
+            max-width: 760px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 28px;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.24);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 14px;
+            margin-bottom: 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255,255,255,0.16);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            color: #fff7d6;
         }
 
         .hero h1 {
             font-size: clamp(2.5rem, 8vw, 4rem);
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #fff, #f0f0f0);
+            margin-bottom: 18px;
+            background: linear-gradient(45deg, #ffffff, #fce7c4 60%, #ffd166);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: slideInUp 1s ease-out;
+            line-height: 1.08;
         }
 
         .hero p {
-            font-size: clamp(1rem, 3vw, 1.4rem);
+            font-size: clamp(1rem, 3vw, 1.35rem);
             margin-bottom: 30px;
-            opacity: 0.9;
+            opacity: 0.95;
             animation: slideInUp 1s ease-out 0.3s both;
-            max-width: 600px;
+            max-width: 640px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.7;
         }
 
         @keyframes slideInUp {
@@ -193,16 +241,16 @@
             color: white;
             text-decoration: none;
             border-radius: 50px;
-            font-weight: 600;
+            font-weight: 700;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.3);
             animation: slideInUp 1s ease-out 0.6s both;
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 16px 45px rgba(255, 107, 107, 0.4);
         }
 
         /* Products Section */
@@ -215,10 +263,42 @@
             text-align: center;
             font-size: clamp(2rem, 6vw, 3rem);
             margin-bottom: 60px;
-            background: linear-gradient(45deg, #fff, #f0f0f0);
+            background: linear-gradient(45deg, #ffffff, #ffe5b8 60%, #ffd166);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: 0.02em;
+        }
+
+        .product-filters {
+            display: flex;
+            justify-content: flex-end;
+            gap: 16px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .filter-select {
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            min-width: 220px;
+        }
+
+        .filter-select option {
+            background: #2c2c2c;
+            color: #fff;
         }
 
         .products-grid {
@@ -230,16 +310,17 @@
 
         .product-item {
             position: relative;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 22px;
             overflow: hidden;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            transition: all 0.35s ease;
+            backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             opacity: 0;
             transform: translateY(50px);
             display: flex;
             flex-direction: column;
+            box-shadow: 0 16px 42px rgba(2, 6, 23, 0.24);
         }
 
         .product-item.animate {
@@ -248,13 +329,14 @@
         }
 
         .product-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: 0 24px 54px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 209, 102, 0.45);
         }
 
         .product-image {
             width: 100%;
-            height: 200px;
+            height: 220px;
             background: linear-gradient(45deg, #667eea, #764ba2);
             position: relative;
             overflow: hidden;
@@ -263,10 +345,34 @@
             justify-content: center;
         }
 
+        .product-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.06), transparent 35%, rgba(7,17,31,0.22));
+            pointer-events: none;
+        }
+
         .product-image::before {
-            content: '🎨';
+            content: '';
             font-size: 3rem;
             opacity: 0.7;
+        }
+
+        .product-image-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            text-align: center;
+            color: rgba(255,255,255,0.9);
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.5;
+            letter-spacing: 0.01em;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.22);
         }
 
         .product-info {
@@ -325,17 +431,18 @@
             background: linear-gradient(45deg, #ff6b6b, #ee5a24);
             color: white;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: auto;
+            box-shadow: 0 10px 24px rgba(255, 107, 107, 0.22);
         }
 
         .order-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 14px 30px rgba(255, 107, 107, 0.3);
         }
 
         /* Services Section */
@@ -351,18 +458,20 @@
         }
 
         .service-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.12);
             padding: 40px 25px;
-            border-radius: 20px;
+            border-radius: 22px;
             text-align: center;
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(14px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 16px 38px rgba(2, 6, 23, 0.18);
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.16);
+            border-color: rgba(255, 209, 102, 0.35);
         }
 
         .service-icon {
@@ -381,6 +490,67 @@
             color: rgba(255, 255, 255, 0.8);
             line-height: 1.6;
             font-size: 0.95rem;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: clamp(50px, 10vw, 100px) 0;
+            background: rgba(0, 0, 0, 0.08);
+        }
+
+        .faq-list {
+            display: grid;
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            color: #fff;
+            text-align: left;
+            padding: 18px 22px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .faq-question span:last-child {
+            font-size: 1.2rem;
+            color: #ffd166;
+            transition: transform 0.2s ease;
+        }
+
+        .faq-item.active .faq-question span:last-child {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.25s ease;
+            padding: 0 22px;
+            color: rgba(255, 255, 255, 0.82);
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 220px;
+            padding: 0 22px 18px;
         }
 
         /* Contact Section */
@@ -417,11 +587,12 @@
         }
 
         .contact-form {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.12);
             padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            backdrop-filter: blur(14px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 48px rgba(2, 6, 23, 0.23);
         }
 
         .form-group {
@@ -493,18 +664,19 @@
             background: linear-gradient(45deg, #ff6b6b, #ee5a24);
             color: white;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 1.1rem;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 12px 30px rgba(255, 107, 107, 0.25);
         }
 
         .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 14px 35px rgba(255, 107, 107, 0.33);
         }
 
         .submit-btn:disabled {
@@ -555,10 +727,12 @@
 
         /* Footer */
         footer {
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(6, 11, 23, 0.45);
             padding: 40px 0;
             text-align: center;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(14px);
+            border-top: 1px solid rgba(255,255,255,0.12);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
         }
 
         .footer-content {
@@ -595,7 +769,8 @@
 
         .social-links a:hover {
             background: rgba(255, 107, 107, 0.2);
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.18);
         }
 
         .social-links a[href^="mailto:"] img {
@@ -703,6 +878,17 @@
         .product-item.animate {
             animation: fadeInUp 0.6s ease forwards;
         }
+
+        .no-products {
+            grid-column: 1 / -1;
+            padding: 40px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px dashed rgba(255, 255, 255, 0.25);
+            border-radius: 20px;
+            font-size: 1.05rem;
+        }
     </style>
 </head>
 <body>
@@ -731,8 +917,9 @@
 
     <section id="home" class="hero">
         <div class="hero-content">
+            <div class="hero-badge">Přesné 3D modely • rychlý tisk • osobní přístup</div>
             <h1>Úžasné 3D Modely</h1>
-            <p>Přivedeme vaši představivost k životu s přesností a rozumnou cenou :D</p>
+            <p>Přivedeme vaši představivost k životu s precizností a levnou cenou.</p>
             <a href="#products" class="cta-button">Zobrazit Produkty</a>
         </div>
     </section>
@@ -740,6 +927,14 @@
     <section id="products" class="products">
         <div class="container">
             <h2 class="section-title">Naše Produkty</h2>
+            <div class="product-filters">
+                <label class="filter-label" for="categoryFilter">
+                    Kategorie:
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="all">Všechny kategorie</option>
+                    </select>
+                </label>
+            </div>
             <div class="products-grid" id="productsGrid"></div>
         </div>
     </section>
@@ -782,6 +977,50 @@
         </div>
     </section>
 
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Často Kladené Otázky</h2>
+            <div class="faq-list">
+                <div class="faq-item active">
+                    <button class="faq-question" type="button">
+                        <span>Jak dlouho trvá vyřízení objednávky?</span>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-answer">
+                        Obvykle zkontrolujeme a odpovíme do několika hodin, podle náročnosti požadavku a aktuální zátěže.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Mohu si nechat upravit rozměr nebo design?</span>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-answer">
+                        Ano. Případně můžeme připravit variantu podle vašich požadavků, velikosti nebo stylu.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Je možné objednat i vlastní model?</span>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-answer">
+                        Rozhodně. Stačí nám poslat svůj nápad nebo referenci a domluvíme se na podobě modelu.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Jak budu vědět, že byla objednávka přijata?</span>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-answer">
+                        Po odeslání formuláře vám potvrdíme přijetí a budeme vás dále informovat přes vybraný kontakt.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">Kontaktujte Nás</h2>
@@ -797,14 +1036,18 @@
                         <p><strong>📧 Email:</strong> Honza-3D@email.cz</p>
                         <p><strong>📞 Telefon:</strong> Obraťte se na Whatsapp</p>
 
-                        <p style="color: #ff3333; font-weight: bold; background-color: rgba(255, 51, 51, 0.1); padding: 8px 12px; border-left: 4px solid #ff3333; border-radius: 4px; margin-top: 15px;">
-                            ⚠️ Pozor: Kontaktní formulář je momentálně ve vývoji a zatím nefunguje. Použijte prosím e-mail nebo WhatsApp níže.
+                        <p style="color: #fff7d6; font-weight: 600; background: linear-gradient(90deg, rgba(255, 209, 102, 0.18), rgba(255, 107, 107, 0.12)); padding: 12px 14px; border-left: 4px solid #ffd166; border-radius: 10px; margin-top: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.12); line-height: 1.5;">
+                            ✨ Objednávkový formulář vám pošle požadavek přímo k vyřízení a pro rychlé doplnění detailů můžete použít WhatsApp.
                         </p>
                     </div>
                 </div>
                 <form class="contact-form" id="contactForm">
                     <div class="success-message" id="successMessage">
                         ✅ Děkujeme! Vaše objednávka byla úspěšně odeslána. Brzy vás kontaktujeme.
+                    </div>
+
+                    <div style="margin-bottom: 18px; padding: 12px 14px; border: 1px solid rgba(255, 107, 107, 0.35); background: rgba(255, 107, 107, 0.12); border-radius: 10px; color: #ffe0e0; font-size: 0.95rem; line-height: 1.5;">
+                        ⚠️ Prosím, používejte tento formulář pouze pokud chcete skutečně objednat. Nezasílejte spam ani zkoušky — takové zprávy budou ignorovány.
                     </div>
                     
                     <div class="form-group required">
@@ -820,8 +1063,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="phone">Telefon</label>
-                        <input type="tel" id="phone" name="phone" placeholder="+420 123 456 789">
+                        <label for="whatsapp">WhatsApp / Telefon</label>
+                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="+420 123 456 789">
                         <div class="error-message">Prosím zadejte platné telefonní číslo</div>
                     </div>
                     
@@ -876,37 +1119,71 @@
         </div>
     </footer>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
         // Products data
         // Copy paste placeholder
         // { name: '.', price: 1, description: '.' },
+        // { name: '.', price: 1, category: 'Figurky', description: '.' },
+            
         const products = [
-            { name: 'Artikulovaný Drak', price: 199, badge: 'Bestseller', description: 'Detailní 3D tištěný drak s ohebným kloubovým tělem. Perfektní antistresová hračka i fantasy dekorace z PLA plastu.' },
-            { name: 'Píšťalka', price: 5, description: 'Kapesní 3D píšťalka na klíče. Ideální for fun nebo na rychlé nalezení kámoše v lese.' },
-            { name: 'Artikulovaný Axolotl', price: 99, description: 'Ohebný 3D tištěný axolotl s hýbacími klouby. Roztomilý vodní dráček jen tak for fun na stůl.' },
-
+            { name: 'Artikulovaný Drak', price: 199, badge: 'Bestseller', categories: ['Figurky', 'Bestseller'], image: 'https://i.ibb.co/Ld6Cw3Q1/dragon.jpg', description: 'Detailní 3D tištěný drak s ohebným kloubovým tělem. Perfektní antistresová hračka i fantasy dekorace z PLA plastu.' },
+            { name: 'Píšťalka', price: 5, categories: ['Dárky'], image: 'https://media.printables.com/media/prints/205725/images/1903105_98769f84-779d-45f4-aff6-0909bd8cc5eb/thumbs/inside/1280x960/jpg/20220512_153825.webp', description: 'Kapesní 3D píšťalka na klíče. Ideální for fun nebo na rychlé nalezení kámoše v lese.' },
+            { name: 'Artikulovaný Axolotl', price: 99, categories: ['Figurky'], image: 'https://i.ibb.co/1JBd1qMF/axolotl.jpg', description: 'Ohebný 3D tištěný axolotl s hýbacími klouby. Roztomilý vodní dráček jen tak for fun na stůl.' },
+            { name: '3DBenchy (lodička)', price: 30, categories: ['Sběratelské'], image: 'https://i.pinimg.com/736x/83/ac/63/83ac63ca7c119dc5f31b6afad28bda67.jpg', description: 'Legendární testovací lodička pro 3D tiskárny a populární sběratelská dekorace.' },
         ];
 
         const productsGrid = document.getElementById('productsGrid');
         const productSelect = document.getElementById('product');
+        const categoryFilter = document.getElementById('categoryFilter');
 
         function formatPrice(price) {
             return `${price} Kč,-`;
         }
 
-        function renderProducts() {
+        function getProductCategories(product) {
+            if (Array.isArray(product.categories)) {
+                return product.categories.length ? product.categories : ['Jiné'];
+            }
+            if (product.category) {
+                return [product.category];
+            }
+            return ['Jiné'];
+        }
+
+        function getUniqueCategories() {
+            return [...new Set(products.flatMap(product => getProductCategories(product)))];
+        }
+
+        function updateCategoryFilter() {
+            if (!categoryFilter) return;
+            const categories = getUniqueCategories();
+            categoryFilter.innerHTML = '<option value="all">Všechny kategorie</option>' +
+                categories.map(category => `<option value="${category}">${category}</option>`).join('');
+            categoryFilter.value = 'all';
+        }
+
+        function renderProducts(list = products) {
             if (!productsGrid || !productSelect) return;
 
             productsGrid.innerHTML = '';
             productSelect.innerHTML = '<option value="">-- Vyberte produkt --</option>';
 
-            products.forEach(product => {
+            if (list.length === 0) {
+                productsGrid.innerHTML = '<div class="no-products">Žádné produkty v této kategorii. Zkuste jinou kategorii nebo se vraťte na všechny produkty.</div>';
+                return;
+            }
+
+            list.forEach(product => {
                 const item = document.createElement('div');
                 item.className = 'product-item';
                 item.dataset.product = product.name;
                 item.dataset.price = product.price;
+                const hasImage = Boolean(product.image && product.image.trim());
                 item.innerHTML = `
-                    <div class="product-image"></div>
+                    <div class="product-image" style="${hasImage ? `background-image: url('${product.image}'); background-size: cover; background-position: center;` : ''}">
+                        ${hasImage ? '' : '<div class="product-image-placeholder">Obrázek ještě není dostupný :C</div>'}
+                    </div>
                     <div class="product-info">
                         <div class="product-title">
                             <span>${product.name}</span>
@@ -919,6 +1196,7 @@
                 `;
 
                 productsGrid.appendChild(item);
+                item.classList.add('animate');
 
                 const option = document.createElement('option');
                 option.value = `${product.name} - ${product.price} Kč`;
@@ -932,9 +1210,19 @@
             productSelect.appendChild(customOption);
         }
 
-        renderProducts();
+        function getFilteredProducts() {
+            if (!categoryFilter || categoryFilter.value === 'all') {
+                return products;
+            }
+            return products.filter(product => getProductCategories(product).includes(categoryFilter.value));
+        }
 
-        // Mobile menu functionality
+        function applyFilters() {
+            renderProducts(getFilteredProducts());
+        }
+
+        updateCategoryFilter();
+        applyFilters();
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.classList.toggle('active');
@@ -959,31 +1247,51 @@
             });
         });
 
-        // Order button functionality
-        document.querySelectorAll('.order-button').forEach(button => {
-            button.addEventListener('click', function() {
-                const productItem = this.closest('.product-item');
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.closest('.faq-item');
+                const isActive = item.classList.contains('active');
+
+                document.querySelectorAll('.faq-item').forEach(faqItem => {
+                    faqItem.classList.remove('active');
+                });
+
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Order button functionality using event delegation
+        if (productsGrid) {
+            productsGrid.addEventListener('click', function(event) {
+                const button = event.target.closest('.order-button');
+                if (!button) return;
+
+                const productItem = button.closest('.product-item');
                 const productName = productItem.dataset.product;
                 const productPrice = productItem.dataset.price;
-                
-                // Scroll to contact form
+
                 document.querySelector('#contact').scrollIntoView({
                     behavior: 'smooth'
                 });
-                
-                // Pre-fill the product field
+
                 setTimeout(() => {
-                    const productSelect = document.querySelector('#product');
-                    productSelect.value = `${productName} - ${productPrice} Kč`;
-                    
-                    // Add visual feedback
-                    productSelect.style.background = 'rgba(255, 107, 107, 0.2)';
-                    setTimeout(() => {
-                        productSelect.style.background = '';
-                    }, 1000);
+                    const productSelectField = document.querySelector('#product');
+                    if (productSelectField) {
+                        productSelectField.value = `${productName} - ${productPrice} Kč`;
+                        productSelectField.style.background = 'rgba(255, 107, 107, 0.2)';
+                        setTimeout(() => {
+                            productSelectField.style.background = '';
+                        }, 1000);
+                    }
                 }, 1000);
             });
-        });
+        }
+
+        if (categoryFilter) {
+            categoryFilter.addEventListener('change', applyFilters);
+        }
 
         // Form validation
         function validateField(field) {
@@ -1039,8 +1347,55 @@
             });
         });
 
+        function buildOrderDiscordMessage(data) {
+            return [
+                '### Nová objednávka z webu Honza3D!',
+                '',
+                `**Zákazník:** ${data.name || '-'}`,
+                '',
+                `**Email:** ${data.email || '-'}`,
+                '',
+                `**Whatsapp:** ${data.whatsapp || '-'}`,
+                '',
+                `**Produkt:** ${data.product || '-'}`,
+                '',
+                `**Počet kusů:** ${data.quantity || '1'}`,
+                '',
+                '**Zpráva / Specifikace:**',
+                '',
+                `${data.message || '-'}`,
+                '',
+                '*Odesláno z webového formuláře.*'
+            ].join('\n');
+        }
+
+        function createMailtoLink(data) {
+            const subject = encodeURIComponent(`Nová objednávka z webu Honza3D - ${data.product || 'bez produktu'}`);
+            const body = encodeURIComponent(buildOrderDiscordMessage(data));
+            return `mailto:honza-3d@email.cz?subject=${subject}&body=${body}`;
+        }
+
+        async function sendOrderToDiscord(data) {
+            const discordMessage = buildOrderDiscordMessage(data);
+            const webhookUrl = 'https://discord.com/api/webhooks/1522186585091604610/8f6SgE_qY-r4TlK6Pl7UTOdBB8ammnQcAwcG2JXtvmjLOBUWhp6TZz8AUlI5A_SlslPV';
+
+            const response = await fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    content: discordMessage
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`Discord webhook failed with status ${response.status}`);
+            }
+        }
+
         // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             // Validate all fields
@@ -1054,7 +1409,6 @@
             });
 
             if (!isFormValid) {
-                // Scroll to first error
                 const firstError = this.querySelector('.form-group.error');
                 if (firstError) {
                     firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -1062,57 +1416,41 @@
                 return;
             }
 
-            // Show loading state
             const submitBtn = document.getElementById('submitBtn');
-            const btnText = submitBtn.querySelector('.btn-text');
             submitBtn.classList.add('loading');
             submitBtn.disabled = true;
 
-            // Simulate form submission
-            setTimeout(() => {
-                // Get form data
-                const formData = new FormData(this);
-                const data = Object.fromEntries(formData);
-                
-                // Calculate total price
-                let totalPrice = 0;
-                if (data.product && data.product !== 'Vlastní model') {
-                    const priceMatch = data.product.match(/(\d+) Kč/);
-                    if (priceMatch) {
-                        totalPrice = parseInt(priceMatch[1]) * (parseInt(data.quantity) || 1);
-                    }
-                }
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            const successMessage = document.getElementById('successMessage');
 
-                // Show success message
-                const successMessage = document.getElementById('successMessage');
+            try {
+                await sendOrderToDiscord(data);
+
+                successMessage.innerHTML = '✅ Děkujeme! Vaše objednávka byla úspěšně odeslána do Discordu. Brzy vás kontaktujeme.';
                 successMessage.style.display = 'block';
                 successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-                // Reset form
                 this.reset();
-                
-                // Clear error states
                 this.querySelectorAll('.form-group.error').forEach(group => {
                     group.classList.remove('error');
                     group.querySelector('.error-message').style.display = 'none';
                 });
-
-                // Reset button
+            } catch (error) {
+                console.error('Form submission error:', error);
+                successMessage.innerHTML = '✅ Děkujeme! Zkusili jsme odeslat objednávku do Discordu. Pokud to nefungovalo, otevřeli jsme vám připravený e-mail.';
+                successMessage.style.display = 'block';
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                if (typeof window !== 'undefined') {
+                    window.location.href = createMailtoLink(data);
+                }
+            } finally {
                 submitBtn.classList.remove('loading');
                 submitBtn.disabled = false;
-
-                // Hide success message after 5 seconds
                 setTimeout(() => {
                     successMessage.style.display = 'none';
                 }, 5000);
-
-                // Show order summary (in real app, this would be sent to server)
-                console.log('Objednávka:', {
-                    ...data,
-                    totalPrice: totalPrice ? `${totalPrice} Kč` : 'Konzultace zdarma'
-                });
-
-            }, 2000);
+            }
         });
 
         // Add scroll effect to header
